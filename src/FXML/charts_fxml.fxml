@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="885.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Charts_controler">
+  <tabs>
+    <Tab onSelectionChanged="#tomato_trade" text="tomato_trade">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <WebView fx:id="tomato_trade" layoutX="76.0" layoutY="22.0" prefHeight="498.0" prefWidth="779.0" AnchorPane.bottomAnchor="-131.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-179.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab onSelectionChanged="#tomato_used" text="tomato_used">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <WebView fx:id="tomato_used" layoutX="316.0" layoutY="48.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab onSelectionChanged="#tomato_ok" text="tomato_ok">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <WebView fx:id="tomato_ok" layoutX="80.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

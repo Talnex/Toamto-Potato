@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body style="background-color: #FFFFFF">
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="background-color: #FFFFFF;height:600px"></div>
+<!-- ECharts单文件引入 -->
+<script src= echarts-all.js type="text/javascript"></script>
+<script >
+    var myChart = echarts.init(document.getElementById('main'),null,{renderer: 'svg'});
+    var option = {"title": {"text": "某地区蒸发量和降水量","subtext": "纯属虚构","x": "left","y": "top"},"toolbox": {"feature": {"mark": {"show": true,"title": {"markUndo": "删除辅助线","markClear": "清空辅助线","mark": "辅助线开关"},"lineStyle": {"color": "#1e90ff","type": "dashed","width": 2}},"dataView": {"show": true,"title": "数据视图","readOnly": false,"lang": ["数据视图","关闭","刷新"]},"restore": {"show": true,"title": "还原"},"saveAsImage": {"show": true,"title": "保存为图片","type": "png","lang": ["点击保存"]}},"show": true},"tooltip": {"trigger": "axis"},"legend": {"data": ["蒸发量","降水量"]},"xAxis": [{"type": "category","data": ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"]}],"yAxis": [{"type": "value","max": 200}],"series": [{"name": "蒸发量","type": "bar","markPoint": {"data": [{"name": "最大值","type": "max"},{"name": "最小值","type": "min"}]},"markLine": {"data": [{"name": "平均值","type": "average"}]},"data": [2.0,4.9,7.0,23.2,25.6,76.7,135.6,162.2,32.6,20.0,6.4,3.3]},{"name": "降水量","type": "bar","markPoint": {"data": [{"name": "最大值","type": "max"},{"name": "最小值","type": "min"}]},"markLine": {"data": [{"name": "平均值","type": "average"}]},"data": [2.6,5.9,9.0,26.4,28.7,70.7,175.6,182.2,48.7,18.8,6.0,2.3]}]};
+    myChart.setOption(option);
+</script>
+</body>
+</html>
