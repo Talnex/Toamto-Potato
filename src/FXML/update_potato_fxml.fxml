@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Update_Potato_controler">
+   <children>
+      <AnchorPane layoutX="34.0" layoutY="-1.0" prefHeight="390.0" prefWidth="191.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTimePicker fx:id="time_t" prefHeight="45.0" prefWidth="214.0" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="130.0" />
+            <JFXDatePicker fx:id="data_p" prefHeight="27.0" prefWidth="146.0" showWeekNumbers="true" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0" />
+            <JFXColorPicker fx:id="color_p" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="240.0" />
+            <JFXTextField fx:id="name_t" focusColor="#81e2e7" layoutY="35.0" prefHeight="25.0" prefWidth="115.0" unFocusColor="BLACK" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+               <font>
+                  <Font size="12.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="note_t" focusColor="#81e2e7" layoutY="185.0" prefHeight="25.0" prefWidth="115.0" unFocusColor="#4d4d4d" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font size="12.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="ca_t" focusColor="#81e2e7" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="285.0">
+               <font>
+                  <Font size="12.0" />
+               </font></JFXTextField>
+            <JFXToggleButton fx:id="ok" mnemonicParsing="false" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="350.0" />
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="done" layoutY="385.0" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="131.0" stylesheets="@../Style/button.css" text="完成" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="395.0" />
+      <JFXButton mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #ff9999;" stylesheets="@../Style/button.css" text="删除" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="395.0" />
+   </children>
+</AnchorPane>

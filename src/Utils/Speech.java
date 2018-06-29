@@ -29,23 +29,20 @@ public class Speech {
 
         AudioInputStream audioInputStream = new AudioInputStream(targetDataLine);
 
-//        FloatControl fc = (FloatControl) sourceDataLine.getControl(FloatControl.Type.MASTER_GAIN);
-//        double value = 2;
-//        float dB = (float)
-//                (Math.log(value == 0.0 ? 0.0001 : value) / Math.log(10.0) * 20.0);
-//        fc.setValue(dB);
+        FloatControl fc = (FloatControl) sourceDataLine.getControl(FloatControl.Type.MASTER_GAIN);
+        double value = 2;
+        float dB = (float)
+                (Math.log(value == 0.0 ? 0.0001 : value) / Math.log(10.0) * 20.0);
+        fc.setValue(dB);
 
         int a = 200;
         int nByte = 0;
         final int bufSize = 4 * 100;
         byte[] buffer = new byte[bufSize];
-        while (a != 0) {
-//            nByte = targetDataLine.read(buffer, 0, bufSize);
+        while ((nByte = targetDataLine.read(buffer, 0, bufSize))!=-1) {
             System.out.print(String.valueOf(nByte));
 //            sourceDataLine.write(buffer, 0, nByte);
-//            AudioSystem.write(audioInputStream, AudioFileFormat.Type.WAVE,file);
-            a--;
-            System.out.println("1行");
+            AudioSystem.write(audioInputStream, AudioFileFormat.Type.WAVE,file);
         }
         audioInputStream.close();
         sourceDataLine.stop();

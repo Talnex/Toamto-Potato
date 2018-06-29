@@ -34,6 +34,7 @@ public class Tomato_controler {
         if (flag == true){
             timeline.setCycleCount(Animation.INDEFINITE);
             button.setBackground(new Background(new BackgroundFill(Color.rgb(159,255,121),null,null)));
+
             timeline.play();
             if (button.getText().equals("完成")) timeline.stop();
         }else{

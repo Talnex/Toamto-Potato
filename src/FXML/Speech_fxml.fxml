@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="169.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Speech_controler">
+   <children>
+      <Button layoutX="54.0" layoutY="71.0" mnemonicParsing="false" text="听写" />
+      <Button layoutX="197.0" layoutY="71.0" mnemonicParsing="false" text="结束" />
+   </children>
+</AnchorPane>

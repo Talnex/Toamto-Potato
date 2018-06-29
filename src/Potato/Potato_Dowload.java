@@ -12,9 +12,20 @@ import java.util.Date;
 import java.util.List;
 
 public class Potato_Dowload {
-    public static List<Potato> select() {
-        List<Potato> list = new ArrayList<>();
-        String sql = "select * from 土豆表";
+    public static List<Potato> list;
+    public static List<Potato> select(String now) {
+        list = new ArrayList<>();
+        String sql = "select *\n" +
+                "        from 土豆表\n" +
+                "        where ( P_Date)<=(\n" +
+                "        SELECT DATEADD(wk, DATEDIFF(wk,0,'" +
+                now +
+                "'), 6)\n" +
+                "        ) and P_Date>=(\n" +
+                "        SELECT DATEADD(wk, DATEDIFF(wk,0,'" +
+                now +
+                "'), 0)\n" +
+                "        )";
 
         Connection connection = DBM.getConnection();
         try {
@@ -23,12 +34,13 @@ public class Potato_Dowload {
 
             int col = resultSet.getMetaData().getColumnCount();
             while (resultSet.next()) {
-                list.add(new Potato(new Date(resultSet.getDate(1).getTime()),
+                list.add(new Potato(new Date(resultSet.getTimestamp(1).getTime()),
                         resultSet.getBoolean(4),
-                        resultSet.getInt(5),
+                        resultSet.getString(5).trim(),
                         resultSet.getString(6).trim(),
                         resultSet.getString(2).trim(),
-                        resultSet.getString(3).trim()
+                        resultSet.getString(3).trim(),
+                        resultSet.getInt(7)
                 ));
             }
             return list;
@@ -40,3 +52,5 @@ public class Potato_Dowload {
         return null;
     }
 }
+
+
