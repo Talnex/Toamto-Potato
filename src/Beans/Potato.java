@@ -1,8 +1,8 @@
 package Beans;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+        import java.text.SimpleDateFormat;
+        import java.util.Date;
 
 public class Potato {
     private SimpleDateFormat simpleDateFormat_time = new SimpleDateFormat("HH:mm");

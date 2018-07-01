@@ -1,13 +1,28 @@
 package Beans;
 
+import com.jfoenix.controls.JFXAlert;
+import com.jfoenix.controls.JFXDialog;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+import sun.jvm.hotspot.debugger.proc.arm.ProcARMThread;
+import sun.security.krb5.internal.PAData;
+
+import java.io.IOException;
 
 public class HboxCell extends FlowPane {
     Potato potato;
@@ -39,6 +54,33 @@ public class HboxCell extends FlowPane {
         event.setPrefWidth(85);
         event.setPrefHeight(25);
         event.setAlignment(Pos.CENTER);
+
+        event.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    selected_potato.selected_potato = potato;
+                    Parent parent = FXMLLoader.load(getClass().getResource("/FXML/Dialog.fxml"));
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setX(event.getSceneX()+100);
+                    stage.setY(event.getSceneY()+120);
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    stage.setAlwaysOnTop(true);
+                    stage.setScene(scene);
+                    scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            stage.close();
+                        }
+                    });
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         setPrefWidth(155);
         this.getChildren().addAll(time, event);

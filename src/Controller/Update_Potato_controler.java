@@ -2,17 +2,22 @@ package Controller;
 
 import Beans.Potato;
 import Beans.selected_potato;
+import Utils.ControllerCenterUtil;
 import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import Potato.Potato_Upload;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
 public class Update_Potato_controler {
+    Potato_controler potato_controler;
 
     Potato potato;
 
@@ -37,6 +42,7 @@ public class Update_Potato_controler {
 
     @FXML
     private void initialize() {
+        potato_controler = (Potato_controler) ControllerCenterUtil.controllerCenterMap.get("Potato_controler");
         potato = selected_potato.selected_potato;
         time_t.setIs24HourView(true);
         name_t.setText(potato.getName());
@@ -50,7 +56,7 @@ public class Update_Potato_controler {
 
 
 
-    public void update() throws SQLException {
+    public void update() throws SQLException, ParseException {
         if (data_p.getValue() != null && time_t.getValue() != null && !name_t.getText().isEmpty()) {
             potato.setName(name_t.getText());
             potato.setColor(color_p.getValue().toString());
@@ -65,16 +71,22 @@ public class Update_Potato_controler {
             potato.setDate(date);
             System.out.println(potato.toString());
             if (Potato_Upload.update(potato) == 1) {
-                System.out.println("成功");
+                Potato_controler.updatestage.close();
+                potato_controler.classify();
             } else {
-                System.out.println("失败");
+                done.setStyle("-fx-background-color: #ff7567");
+                done.setText("请重试");
             }
         } else {
-            System.out.println("信息不全");
+            done.setStyle("-fx-background-color: #ff7567");
+            done.setText("信息不全");
         }
     }
 
-    public void delete(){
-        System.out.println(Potato_Upload.delete(potato));
+    public void delete() throws ParseException {
+        if (Potato_Upload.delete(potato)==1){
+            Potato_controler.updatestage.close();
+            potato_controler.classify();
+        }
     }
 }

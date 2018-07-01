@@ -2,11 +2,13 @@ package Potato;
 
 import Beans.Potato;
 import Utils.DB.DBM;
+import sun.security.pkcs11.Secmod;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 
 public class Potato_Upload {
+    public static Connection connection = Potato_Dowload.connection;
     public static int insert(Potato potato) {
         String sql = "insert " +
                 "into 土豆表(P_Date,P_Name,P_note,P_ok,F_color,F_ca) " +
@@ -33,12 +35,10 @@ public class Potato_Upload {
         String sql = "delete from 土豆表\n" +
                 "where IDENTITYCOL="+potato.getNo();
         int i = 0;
-        Connection connection = DBM.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             i = preparedStatement.executeUpdate();
             preparedStatement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -46,7 +46,6 @@ public class Potato_Upload {
     }
 
     public static int go(String sql,Potato potato){
-        Connection connection = DBM.getConnection();
         int i = 0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -58,7 +57,6 @@ public class Potato_Upload {
             preparedStatement.setString(6, potato.getCa());
             i = preparedStatement.executeUpdate();
             preparedStatement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,12 +64,10 @@ public class Potato_Upload {
     }
 
     public static int go(String sql) throws SQLException {
-        Connection connection = DBM.getConnection();
         int i = 0;
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         i = preparedStatement.executeUpdate();
         preparedStatement.close();
-        connection.close();
         return i;
     }
 

@@ -4,12 +4,12 @@ import Beans.HboxCell;
 import Beans.Potato;
 import Beans.selected_potato;
 import Potato.Potato_Dowload;
+import Utils.ControllerCenterUtil;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,8 +37,8 @@ public class Potato_controler {
 
     private Date now = new Date();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Stage newtage = new Stage();
-    Stage updatestage = new Stage();
+    public static  Stage newtage = new Stage();
+    public static  Stage updatestage = new Stage();
 
     List<String> labels = new ArrayList<>();
 
@@ -53,7 +53,7 @@ public class Potato_controler {
 
     List<ListView> listViews = new ArrayList<>();
 
-    List<Potato> potatoes= new ArrayList<>();
+    List<Potato> potatoes = new ArrayList<>();
     @FXML
     public Label label_1;
     @FXML
@@ -89,6 +89,7 @@ public class Potato_controler {
 
     @FXML
     private void initialize() throws ParseException, IOException {
+        ControllerCenterUtil.controllerCenterMap.put("Potato_controler",this);
 
         label_1.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), null, null)));
         label_2.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), null, null)));
@@ -130,9 +131,9 @@ public class Potato_controler {
                 public void handle(MouseEvent event) {
                     if (event.getClickCount() == 2) {
                         String res = listview_.getSelectionModel().getSelectedItems().toString();
-                        res = res.substring(1,res.length()-1);
-                        for (Potato p:potatoes
-                             ) {
+                        res = res.substring(1, res.length() - 1);
+                        for (Potato p : potatoes
+                                ) {
                             if (res.equals(String.valueOf(p.getNo()))) {
                                 selected_potato.selected_potato = p;
 
@@ -156,7 +157,6 @@ public class Potato_controler {
 
                         listview_.getSelectionModel().clearSelection();
                     }
-                    if (event.isMetaDown()) System.out.println("command");
                 }
             });
         }
@@ -167,7 +167,7 @@ public class Potato_controler {
         newtage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                newtage.hide();
+                newtage.close();
             }
         });
         newtage.show();
@@ -185,6 +185,7 @@ public class Potato_controler {
                         lists) {
                     list.clear();
                 }
+//                System.out.println(simpleDateFormat.format(now));
                 potatoes = Potato_Dowload.select(simpleDateFormat.format(now));
                 try {
                     labels = getweek(simpleDateFormat.format(now));
@@ -203,11 +204,12 @@ public class Potato_controler {
                 if (!potatoes.isEmpty()) {
                     for (Potato po :
                             potatoes) {
+//                        System.out.println(po.getDateString());
                         if (labels.indexOf(po.getDateString()) != -1) {
                             lists.get(labels.indexOf(po.getDateString())).add(new HboxCell(po));
                         }
                     }
-                }
+                }else System.out.println("啥也没有");
 
                 for (int i = 0; i < 7; i++) {
                     listViews.get(i).setFixedCellSize(50);
@@ -250,7 +252,7 @@ public class Potato_controler {
     public void addnow() throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
-        calendar.add(Calendar.DAY_OF_WEEK, 6);
+        calendar.add(Calendar.DAY_OF_WEEK, 7);
         setNow(calendar.getTime());
         classify();
     }
@@ -258,7 +260,7 @@ public class Potato_controler {
     public void decnow() throws ParseException {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
-        calendar.add(Calendar.DAY_OF_WEEK, -6);
+        calendar.add(Calendar.DAY_OF_WEEK, -7);
         setNow(calendar.getTime());
         classify();
     }
@@ -268,6 +270,7 @@ public class Potato_controler {
             @Override
             public void run() {
                 newtage.show();
+
             }
         });
 

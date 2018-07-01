@@ -13,26 +13,31 @@ import java.util.List;
 
 public class Potato_Dowload {
     public static List<Potato> list;
+    public static Connection connection = DBM.getConnection();
+
     public static List<Potato> select(String now) {
         list = new ArrayList<>();
         String sql = "select *\n" +
-                "        from 土豆表\n" +
-                "        where ( P_Date)<=(\n" +
-                "        SELECT DATEADD(wk, DATEDIFF(wk,0,'" +
+                "from 土豆表\n" +
+                "where P_Date<DATEADD(dd, (9-CASE when datepart(weekday,'" +
                 now +
-                "'), 6)\n" +
-                "        ) and P_Date>=(\n" +
-                "        SELECT DATEADD(wk, DATEDIFF(wk,0,'" +
+                "') = 1 Then 8 ELSE datepart(weekday,'" +
                 now +
-                "'), 0)\n" +
-                "        )";
-
-        Connection connection = DBM.getConnection();
+                "')END),'" +
+                now +
+                "')\n" +
+                " and P_Date>=DATEADD(dd, -(CASE when datepart(weekday,'" +
+                now +
+                "') = 1 Then 8 ELSE datepart(weekday,'" +
+                now+
+                "')END -2), '" +
+                now +
+                "')\n" +
+                "order by P_Date";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            int col = resultSet.getMetaData().getColumnCount();
             while (resultSet.next()) {
                 list.add(new Potato(new Date(resultSet.getTimestamp(1).getTime()),
                         resultSet.getBoolean(4),

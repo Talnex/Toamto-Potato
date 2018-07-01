@@ -9,18 +9,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Potato_controler">
    <children>
-      <HBox prefHeight="40.0" prefWidth="1280.0" AnchorPane.bottomAnchor="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox onMouseClicked="#classify" prefHeight="55.0" prefWidth="1280.0" AnchorPane.bottomAnchor="785.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="label_1" alignment="CENTER" prefHeight="39.0" prefWidth="184.0" text="Monday" textAlignment="CENTER" />
-            <Label fx:id="label_2" alignment="CENTER" prefHeight="39.0" prefWidth="182.0" text="Tuesday" textAlignment="CENTER" />
-            <Label fx:id="label_3" alignment="CENTER" prefHeight="39.0" prefWidth="180.0" text="Wendsday" textAlignment="CENTER" />
-            <Label fx:id="label_4" alignment="CENTER" prefHeight="39.0" prefWidth="184.0" text="Thursday" textAlignment="CENTER" />
-            <Label fx:id="label_5" alignment="CENTER" prefHeight="39.0" prefWidth="181.0" text="Friday" textAlignment="CENTER" />
-            <Label fx:id="label_6" alignment="CENTER" prefHeight="39.0" prefWidth="183.0" text="Satuday" textAlignment="CENTER" />
-            <Label fx:id="label_7" alignment="CENTER" prefHeight="39.0" prefWidth="183.0" text="Sunday" textAlignment="CENTER" />
+            <Label fx:id="label_1" alignment="CENTER" prefHeight="56.0" prefWidth="184.0" text="Monday" textAlignment="CENTER" />
+            <Label fx:id="label_2" alignment="CENTER" prefHeight="55.0" prefWidth="182.0" text="Tuesday" textAlignment="CENTER" />
+            <Label fx:id="label_3" alignment="CENTER" prefHeight="56.0" prefWidth="180.0" text="Wendsday" textAlignment="CENTER" />
+            <Label fx:id="label_4" alignment="CENTER" prefHeight="55.0" prefWidth="184.0" text="Thursday" textAlignment="CENTER" />
+            <Label fx:id="label_5" alignment="CENTER" prefHeight="85.0" prefWidth="181.0" text="Friday" textAlignment="CENTER" />
+            <Label fx:id="label_6" alignment="CENTER" prefHeight="69.0" prefWidth="183.0" text="Satuday" textAlignment="CENTER" />
+            <Label fx:id="label_7" alignment="CENTER" prefHeight="54.0" prefWidth="183.0" text="Sunday" textAlignment="CENTER" />
          </children>
       </HBox>
-      <HBox layoutY="41.0" prefHeight="760.0" prefWidth="1280.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+      <HBox layoutY="52.0" prefHeight="749.0" prefWidth="1280.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
          <children>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="761.0" prefWidth="183.0">
                <children>
@@ -44,7 +44,7 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="761.0" prefWidth="182.0">
                <children>
-                  <JFXListView fx:id="listview5" stylesheets="@../Style/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <JFXListView fx:id="listview5" prefHeight="744.0" prefWidth="182.0" stylesheets="@../Style/listview.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="761.0" prefWidth="182.0">
@@ -63,12 +63,12 @@
             <Font size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutY="805.0" onAction="#decnow" prefHeight="39.0" prefWidth="35.0" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1245.0" AnchorPane.topAnchor="800.0">
+      <JFXButton layoutY="805.0" onAction="#decnow" prefHeight="39.0" prefWidth="35.0" text="&lt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1200.0" AnchorPane.topAnchor="800.0">
          <font>
             <Font size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="1231.0" layoutY="799.0" onAction="#addnow" prefHeight="39.0" prefWidth="35.0" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1245.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="800.0">
+      <JFXButton layoutX="1231.0" layoutY="799.0" onAction="#addnow" prefHeight="39.0" prefWidth="35.0" text="&gt;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="800.0">
          <font>
             <Font size="16.0" />
          </font>

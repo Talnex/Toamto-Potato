@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body style="background-color: #FFFFFF">
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="background-color: #FFFFFF;height:700px;width: 600px;float: left;padding-left: 120px;padding-top: 120px"></div>
+<div id="he" style="background-color: #FFFFFF;height:740px;width: 850px;float: left;padding-left: 50px;padding-top: 120px"></div>
+
+<!-- ECharts单文件引入 -->
+<script src=echarts-all.js type="text/javascript"></script>
+<script src=macarons.js></script>
+<script>
+    var myChart = echarts.init(document.getElementById('main'),'macarons', {renderer: 'svg'});
+    var option = option = {
+        title : {
+            text: '每日软件使用情况图',
+            subtext: '2018-7-2',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:['IntelliJ']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: false},
+                dataView : {show: false, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'软件：',
+                type:'pie',
+                radius : [30, 200],
+                center : ['50%', '50%'],
+                roseType : 'radius',
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                lableLine: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data:[
+{value:20, name:'IntelliJ'}                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+
+<script>
+    var myChart = echarts.init(document.getElementById('he'),'macarons', {renderer: 'svg'});
+    var option = option = {
+        title : {
+            text: '本周分数趋势',
+            subtext: '',
+            x:'center'
+        },
+        xAxis: {
+            type: 'category',
+            data: ['2018-07-02']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [2],
+            type: 'line'
+        }]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>
